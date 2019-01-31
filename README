@@ -1,0 +1,2 @@
+build.sh to build the docker image
+run.sh to launch a conainer
