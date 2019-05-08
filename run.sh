@@ -1,4 +1,4 @@
-docker run -it \
+docker run -it --rm \
     --workdir=$HOME \
     --user=$(id -u):$(id -g) \
     --env="HOME" \
@@ -10,5 +10,7 @@ docker run -it \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
     --volume=/home/$USER/dockerhome:/$HOME \
     --volume=$XAUTHORITY:/home/$USER/.Xauthority \
+    --cap-add=SYS_PTRACE \
+    --security-opt seccomp=unconfined \
     xvan/powerdevs:r981 \
     /opt/powerdevs/bin/run.sh
