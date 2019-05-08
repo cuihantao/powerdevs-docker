@@ -7,7 +7,6 @@ RUN touch /etc/init.d/systemd-logind
 RUN apt-get update && apt-get -y install wget
 RUN wget https://ufpr.dl.sourceforge.net/project/powerdevs/powerdevs_amd64_981.deb -O powerdevs_amd64.deb
 RUN dpkg -i /tmp/powerdevs_amd64.deb ; apt-get -yf install && dpkg -i powerdevs_amd64.deb
-RUN apt-get -y install gdb
 RUN rm powerdevs_amd64.deb
 
 
@@ -31,3 +30,6 @@ RUN mv /usr/share/scilab/contrib/BackDoor/0.2/etc/BackDoor.start  /usr/share/sci
 #RUN tar cvzf BackDoor_0.2_5.5.bin.x86_64.linux.tar.gz BackDoor_0.2/
 #RUN scilab-cli -e "atomsSetConfig('offline','True'); atomsInstall('/tmp/BackDoor_0.2_5.5.bin.x86_64.linux.tar.gz'); exit(0)"
 #RUN mv /usr/share/scilab/contrib/BackDoor/0.2/etc/BackDoor.start  /usr/share/scilab/contrib/BackDoor/0.2/etc/backdoor.start
+
+
+RUN apt-get update && apt-get -y install gdb
