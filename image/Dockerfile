@@ -31,5 +31,13 @@ RUN mv /usr/share/scilab/contrib/BackDoor/0.2/etc/BackDoor.start  /usr/share/sci
 #RUN scilab-cli -e "atomsSetConfig('offline','True'); atomsInstall('/tmp/BackDoor_0.2_5.5.bin.x86_64.linux.tar.gz'); exit(0)"
 #RUN mv /usr/share/scilab/contrib/BackDoor/0.2/etc/BackDoor.start  /usr/share/scilab/contrib/BackDoor/0.2/etc/backdoor.start
 
+#pmu_multicore deps
+RUN apt-get -y install gdb git cmake libboost1.55-all-dev
 
-RUN apt-get update && apt-get -y install gdb
+#ssh and xeyes for testing
+RUN apt-get -y install ssh x11-apps
+RUN mkdir /var/run/sshd
+RUN /usr/bin/ssh-keygen -A
+
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]
